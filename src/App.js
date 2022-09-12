@@ -1,8 +1,8 @@
-// IMPORT REACT STUFF
+// REACT STUFF
 import { useState } from "react";
 
-// IMPORT ASSETS
-import Logo from "./assets/logos/Sociality-logo.png";
+// ASSETS
+import Logo from "./assets/images/logos/Sociality-logo.png";
 import Profile from "./assets/images/profile-foto.png";
 import {
   Logo1,
@@ -11,9 +11,23 @@ import {
   Logo4,
   Logo5,
   Logo6,
-} from "./assets/images/brand-logo";
+} from "./assets/images/logos/brand-logo";
+
+import {
+  engage,
+  listen,
+  notifications,
+  publish,
+  report,
+  summary,
+} from "./assets/icons/index";
+
+// COMPONENTS
+import Dot from "./components/General/Dot";
+import SideBarMenu from "./components/SideBar/SideBarMenu";
 
 function App() {
+  // SIDEBAR
   const SideBar = [
     {
       id: 1,
@@ -55,9 +69,118 @@ function App() {
 
   const [selectedBrand, setSelectedBrand] = useState(4);
 
+  // STATUS
+  const Status = [
+    {
+      id: 1,
+      title: "Published",
+      color: "#ACACAC",
+    },
+    {
+      id: 2,
+      title: "Scheduled",
+      color: "#3AC183",
+    },
+    {
+      id: 3,
+      title: "Need Approval",
+      color: "#F7BF38",
+    },
+    {
+      id: 4,
+      title: "Error",
+      color: "#FB6450",
+    },
+    {
+      id: 5,
+      title: "Notes",
+      color: "#67B1F2",
+    },
+  ];
+
+  // SIDEBAR MENU
+  const SideBarMenuArray = [
+    {
+      id: 1,
+      title: "Notifications",
+      icon: notifications,
+      notification: 29,
+    },
+    {
+      id: 2,
+      title: "Summary",
+      icon: summary,
+      notification: 0,
+      subMenu: [
+        {
+          id: 1,
+          title: "menu1",
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "Publish",
+      icon: publish,
+      notification: 0,
+      subMenu: [
+        {
+          id: 1,
+          title: "Compose",
+        },
+        {
+          id: 2,
+          title: "Feed",
+        },
+      ],
+    },
+    {
+      id: 4,
+      title: "Engage",
+      icon: engage,
+      notification: 0,
+      subMenu: [
+        {
+          id: 1,
+          title: "menu1",
+        },
+      ],
+    },
+    {
+      id: 5,
+      title: "Listen",
+      icon: listen,
+      notification: 0,
+      subMenu: [
+        {
+          id: 1,
+          title: "menu1",
+        },
+      ],
+    },
+    {
+      id: 6,
+      title: "Report",
+      icon: report,
+      notification: 0,
+      subMenu: [
+        {
+          id: 1,
+          title: "menu1",
+        },
+        {
+          id: 2,
+          title: "menu2",
+        },
+      ],
+    },
+  ];
+
+  const [selectedMenu, setSelectedMenu] = useState(3);
+
   return (
     <div className="flex min-h-screen">
-      <div className="w-[274px] min-h-full bg-SideBar-Main flex flex-col">
+      <div className="w-[274px] min-h-full bg-SideBar-Main flex  flex-col">
         <div className="h-14 flex justify-center items-center bg-Logo-Bg">
           <img src={Logo} alt="Sociality Logo" />
         </div>
@@ -65,8 +188,8 @@ function App() {
           <div className="w-16 h-full flex flex-col gap-3 items-center">
             {
               // SIDEBAR ICONS
-              SideBar.map((item) => (
-                <div className="relative">
+              SideBar.map((item, i) => (
+                <div key={i} className="relative">
                   {
                     // BRAND SELECTED
                     selectedBrand === item.id && (
@@ -96,14 +219,35 @@ function App() {
               ))
             }
           </div>
-          <div className="flex-1 h-full bg-SideBar-Secondary">SIDEBAR-TWO</div>
+          <div className="flex-1 h-full bg-SideBar-Secondary">
+            {SideBarMenuArray.map((item) => (
+              <SideBarMenu
+                key={item.id}
+                data={item}
+                selectedMenu={selectedMenu}
+                setSelectedMenu={setSelectedMenu}
+              />
+            ))}
+          </div>
         </div>
       </div>
       <div className="flex-1 py-8 px-12">
         <div className="flex justify-between">
-          <div>STATUS</div>
+          <div className="flex gap-5 flex-1 flex-wrap items-center">
+            {
+              // Status
+              Status.map((item) => (
+                <div className="flex gap-[10px] items-center" key={item.id}>
+                  <Dot size="10" color={item.color} />
+                  <p className="text-[#444] text-lg whitespace-nowrap">
+                    {item.title}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
           <div>
-            <img className="rounded-full" src={Profile} alt="Profile" />
+            <img className="rounded-full w-16" src={Profile} alt="Profile" />
           </div>
         </div>
       </div>

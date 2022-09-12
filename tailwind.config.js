@@ -13,6 +13,7 @@ module.exports = {
       "SideBar-Main": "#2A2F33",
       "SideBar-Secondary": "#393D42",
       "SideBar-Red": "#F55661",
+      white: "#FFFFFF",
     },
     fontFamily: {
       sans: ["Raleway", "sans-serif"],
