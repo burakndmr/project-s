@@ -1,5 +1,8 @@
 // REACT STUFF
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+// DATA
+import Data from "./api/data.json";
 
 // ASSETS
 import Logo from "./assets/images/logos/Sociality-logo.png";
@@ -25,6 +28,7 @@ import {
 // COMPONENTS
 import Dot from "./components/General/Dot";
 import SideBarMenu from "./components/SideBar/SideBarMenu";
+import ContentContainer from "./components/MainSection/OneDayContent/ContentContainer";
 
 function App() {
   // SIDEBAR
@@ -178,6 +182,18 @@ function App() {
 
   const [selectedMenu, setSelectedMenu] = useState(3);
 
+  // TODO: SORT BY DATE
+
+  const DataArray = [];
+
+  for (const [key, value] of Object.entries(Data.posts_by_date)) {
+    DataArray.push({
+      date: key,
+      posts: value,
+    });
+  }
+  console.log(DataArray);
+
   return (
     <div className="flex min-h-screen">
       <div className="w-[274px] min-h-full bg-SideBar-Main flex  flex-col">
@@ -249,6 +265,11 @@ function App() {
           <div>
             <img className="rounded-full w-16" src={Profile} alt="Profile" />
           </div>
+        </div>
+        <div>
+          {DataArray.map((item, i) => (
+            <ContentContainer key={i} data={item} />
+          ))}
         </div>
       </div>
     </div>
