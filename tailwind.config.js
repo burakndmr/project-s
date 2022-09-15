@@ -5,7 +5,7 @@ module.exports = {
     extend: {},
     colors: {
       "Light-Gray": "#F5F7F8",
-      Publishing: "#3AC183",
+      Scheduled: "#3AC183",
       Published: "#ACACAC",
       "Need-Approval": "#F7BF38",
       Error: "#FB6450",

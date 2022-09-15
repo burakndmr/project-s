@@ -267,7 +267,7 @@ function App() {
           </div>
         </div>
         <div>
-          {DataArray.map((item, i) => (
+          {DataArray.reverse().map((item, i) => (
             <ContentContainer key={i} data={item} />
           ))}
         </div>
