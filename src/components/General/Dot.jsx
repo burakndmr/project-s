@@ -1,5 +1,3 @@
-import React from "react";
-
 const Dot = (props) => {
   const { color, size } = props;
   return (

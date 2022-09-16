@@ -4,14 +4,15 @@ import "moment/locale/en-gb";
 
 // COMPONENTS
 import ColorBox from "./ColorBox";
+import Image from "./Image";
 
 const Card = (props) => {
   const { message } = props.data.entry;
 
-  const coloredMessage = message.split(" ").map((word) => {
+  const coloredMessage = message.split(" ").map((word, i) => {
     if (word.includes("http://") || word.includes("https://")) {
       return (
-        <a className="text-[#71BCF0]" href={word}>
+        <a key={i} className="text-[#71BCF0]" href={word}>
           {word}
         </a>
       );
@@ -22,27 +23,27 @@ const Card = (props) => {
   const statusArray = [
     {
       id: 0,
-      color: "Need-Approval",
+      color: "bg-[#F7BF38]",
       status: "Need Approval",
     },
     {
       id: 1,
-      color: "Scheduled",
+      color: "bg-[#3AC183]",
       status: "Scheduled",
     },
     {
       id: 2,
-      color: "Publishing",
+      color: "bg-[Publishing]",
       status: "Publishing",
     },
     {
       id: 3,
-      color: "Published",
+      color: "bg-[#ACACAC]",
       status: "Published",
     },
     {
       id: 4,
-      color: "Error",
+      color: "bg-[#FB6450]",
       status: "Error",
     },
   ];
@@ -63,6 +64,7 @@ const Card = (props) => {
           <div>logos</div>
         </div>
         <p className="font-bold text-[#959595] text-sm">{coloredMessage}</p>
+        <Image image={props.data.entry.image} />
       </div>
     </div>
   );

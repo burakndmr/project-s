@@ -1,16 +1,38 @@
-import React from "react";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const ColorBox = (props) => {
   const { statusArray, status, cardLogo } = props;
 
-  console.log("CardLogo", cardLogo);
+  const channelArray = [
+    {
+      id: 0,
+      logo: <FaFacebookF color="#fff" />,
+      name: "facebook",
+    },
+    {
+      id: 1,
+      logo: <FaInstagram color="#fff" />,
+      name: "instagrambusiness",
+    },
+    {
+      id: 2,
+      logo: <FaTwitter color="#fff" />,
+      name: "twitter",
+    },
+  ];
 
-  return statusArray.map((stat, i) =>
+  return statusArray.map((stat) =>
     stat.id === status ? (
-      <div key={i} className={`w-10 h-full bg-${stat.color}`}></div>
+      <div
+        key={stat.id}
+        className={`w-10 flex items-center justify-center h-full ${stat.color}`}
+      >
+        {channelArray.map((channel, i) =>
+          channel.name === cardLogo ? <div key={i}>{channel.logo}</div> : null
+        )}
+      </div>
     ) : null
   );
-  // ></div> ) : null)
 };
 
 export default ColorBox;

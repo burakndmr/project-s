@@ -1,5 +1,10 @@
-import React from "react";
+// REACT
+import { useState } from "react";
+
+// ICONS
 import { SeeMore, SeeLess } from "../../assets/icons/index";
+
+// COMPONENTS
 import Dot from "../General/Dot";
 
 const SideBarMenu = (props) => {
@@ -9,7 +14,7 @@ const SideBarMenu = (props) => {
   // STATE
   const { selectedMenu, setSelectedMenu } = props;
 
-  const [selectedSubMenu, setSelectedSubMenu] = React.useState(1);
+  const [selectedSubMenu, setSelectedSubMenu] = useState(1);
 
   // FUNCTIONS
   const handleMenuClick = (id) => {
