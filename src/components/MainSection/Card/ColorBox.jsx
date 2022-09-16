@@ -6,17 +6,17 @@ const ColorBox = (props) => {
   const channelArray = [
     {
       id: 0,
-      logo: <FaFacebookF color="#fff" />,
+      logo: <FaFacebookF color="#fff" className="text-xl" />,
       name: "facebook",
     },
     {
       id: 1,
-      logo: <FaInstagram color="#fff" />,
+      logo: <FaInstagram color="#fff" className="text-xl" />,
       name: "instagrambusiness",
     },
     {
       id: 2,
-      logo: <FaTwitter color="#fff" />,
+      logo: <FaTwitter color="#fff" className="text-xl" />,
       name: "twitter",
     },
   ];

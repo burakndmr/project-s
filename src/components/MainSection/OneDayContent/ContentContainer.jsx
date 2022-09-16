@@ -6,8 +6,6 @@ import "moment/locale/en-gb";
 import Card from "../Card/Card";
 
 const ContentContainer = (props) => {
-  console.log("PROPSCONTAİNER", props.data.posts);
-
   return (
     <div className="mb-[70px] ">
       <h1 className="text-2xl mb-3 text-[#959595]">

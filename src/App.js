@@ -182,8 +182,6 @@ function App() {
 
   const [selectedMenu, setSelectedMenu] = useState(3);
 
-  // TODO: SORT BY DATE
-
   const DataArray = [];
 
   for (const [key, value] of Object.entries(Data.posts_by_date)) {
@@ -192,7 +190,6 @@ function App() {
       posts: value,
     });
   }
-  console.log(DataArray);
 
   return (
     <div className="flex min-h-screen">
@@ -215,7 +212,7 @@ function App() {
                   {
                     // BRAND NOTIFICATION
                     item.notification > 0 && (
-                      <div className="absolute top-[-5px] right-[-5px] w-4 h-4 bg-[#3AC1A9] rounded-full flex justify-center items-center text-white text-xs">
+                      <div className="absolute top-[-5px] right-[-5px] w-4 h-4 p-[10px] bg-[#3AC1A9] rounded-full flex justify-center items-center text-white text-xs">
                         {item.notification}
                       </div>
                     )
@@ -263,7 +260,11 @@ function App() {
             }
           </div>
           <div>
-            <img className="rounded-full w-16" src={Profile} alt="Profile" />
+            <img
+              className="rounded-full w-16 cursor-pointer"
+              src={Profile}
+              alt="Profile"
+            />
           </div>
         </div>
         <div>
